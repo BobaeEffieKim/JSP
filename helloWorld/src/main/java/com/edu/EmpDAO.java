@@ -7,17 +7,18 @@ import java.util.List;
 public class EmpDAO extends DAO{ //db처리해주는 작업들 모음
 	
 	//변경
-	public void updateMember(String name, String pass, String role) {
+	public int updateMember(String name, String pass, String role) {
 		String sql = "update members set member_password=?, member_role=? "
 					+ "where member_id=?";
 		connect();
+		int r=0;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, pass);
 			pstmt.setString(2, role);
 			pstmt.setString(3, name);
 			
-			int r = pstmt.executeUpdate();
+			r = pstmt.executeUpdate();
 			System.out.println(r + "건 변경됨.");
 			
 		} catch (SQLException e) {
@@ -25,23 +26,23 @@ public class EmpDAO extends DAO{ //db처리해주는 작업들 모음
 		} finally {
 			disconnect();
 		}
-		
+		return r;
 	}
 
 	//user_name, user_pass, role 세개 문자값을 넘겨받아 => db에 입력하는 기능
 		//입력하는 화면 1개, 화면에서 처리할 서블릿 1개, 서블릿에서 empDAO에 입력하는?기능 1개 필요
-	public void insertMember(String name, String pass, String role) {
+	public int insertMember(String name, String pass, String role) {
 		String sql = "insert into members values(?,?,?)";
 		connect();
 //		List<Employee> list = new ArrayList<>();
-		
+		int r=0;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, name);
 			pstmt.setString(2, pass);
 			pstmt.setString(3, role);
 			
-			int r = pstmt.executeUpdate();	//insert, update, delete
+			r = pstmt.executeUpdate();	//insert, update, delete
 			System.out.println(r+"건 입려됨.");
 			
 		} catch (SQLException e) {
@@ -49,7 +50,7 @@ public class EmpDAO extends DAO{ //db처리해주는 작업들 모음
 		} finally {
 			disconnect();
 		}
-		
+		return r;
 	}
 	
 	
