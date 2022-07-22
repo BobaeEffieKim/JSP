@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>html/member.html</title>
+  </head>
+  <body>
+    <h3>회원정보</h3>
+    <form action="queryTest" method="post">
+      ID : <input type="text" name="id"><br>
+      PW : <input type="password" name="pwd"><br>
+      Name : <input type="text" name="name"><br>
+      Hobby : <input type="checkbox" name="hobby" value="climbing" checked>등산
+      <input type="checkbox" name="hobby" value="workout">운동
+      <input type="checkbox" name="hobby" value="reading">독서
+      <input type="checkbox" name="hobby" value="traveling">여행
+      <input type="checkbox" name="hobby" value="etc1">기타<br>
+      Gender : <input type="radio" name="gender" value="male" checked>남자
+      <input type="radio" name="gender" value="female">여자<br>
+      Religion : <select name="religion">
+        <option value="christianity">기독교</option>
+        <option value="buddhism">불교</option>
+        <option value="catholicism">천주교</option>
+        <option value="etc2">기타</option>
+        <option value="atheism">무교</option>
+                </select><br>
+      Self-Intro. : <br>
+      <textarea name="introduction" cols="30" rows="10"></textarea><br>
+      <input type="submit" value="전송">
+      <input type="reset" value="초기화">          
+    </form>
+    <script>
+      console.log(decodeURI('%ED%99%8D%EA%B8%B8%EB%8F%99'));
+      console.log(encodeURI("홍길동"));
+      let str = 'id=user9&pwd=9999&name=%ED%99%8D%EA%B8%B8%EB%8F%99&hobby=climbing&hobby=sport&gender=male&religion=christianity&introduction=%E3%85%81%E3%84%B9%E3%85%87';
+      // let id = getParameter(str, 'id');
+      // let pwd = getParameter(str,'pwd'); /*str에서 'pwd'를 찾아오는 getParameter함수 */
+      // let name = getParameter(str, decodeURI('name'));
+      // let hobby = getParameter(str, 'hobby');
+      // let gender = getParameter(str, 'gender');
+      // let religion = getParameter(str, decodeURI('introduction'));
+
+      // function getParameter(queryString,param){ /*파라미터 값 읽어오는 함수*/
+
+      //   // let index = str.indexOf("?")+1;
+      //   // console.log(index);
+      //   let strList = str.split('&');
+
+      //   let rst = "";
+      //   for(let i=0; i<str.length; i++){
+      //     let arr = str[i].split("=");
+
+ 
+      //   }
+
+      //   return rst;  /*파라미터에 pwd가 들어온다면*/
+
+      // }
+
+        let strList = str.split('&');
+      console.log(strList);
+
+      function getParameter(querystring, param) {
+        for(let i=0;i<strList.length;i++) {
+          if (strList[i].includes(param)) {
+            let arr = strList[i].split('=');
+            console.log(arr[1]);
+
+          }
+        } 
+      }
+      getParameter(str,'religion');
+      
+    </script>
+  </body>
+</html>

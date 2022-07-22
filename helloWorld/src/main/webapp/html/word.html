@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>word.html</title>
+  <style>
+    #show{
+      width: 350px;
+      height: 370px;
+      background-color: yellow;
+    }
+    #show > span{
+      display: inline-block;
+      text-align: center;
+      width: 100px;
+      height: 25px;
+      background-color: aqua;
+      border: 1px solid aquamarine;
+      padding: 2px;
+      margin: 2px;
+    }
+    #show>span:nth-child(2){
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" name="userInput" id="userInput">
+  <div id="show"></div>
+  
+  <script>
+    let word = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas voluptatum cumque voluptatem quos facere tempora facilis impedit porro accusamus architecto, quis explicabo. Repellat beatae temporibus necessitatibus ducimus, reprehenderit laudantium nemo.';
+    let wordList = word.split(' ');
+    let show = document.getElementById('show');
+    let input = document.querySelector('#userInput');
+
+    input.onchange = remove;
+
+    for(let word of wordList){
+      let span = document.createElement('span');
+      span.innerText = word;  //<span>Lorem</span>
+      show.append(span);
+    }               
+    
+    function remove(){
+      let val = this.value;
+      let idx = wordList.indexOf(val) +1;
+      
+      document.querySelector(`#show>span:nth-child(${idx})`).style.display='none';
+    }
+
+    //교수님
+    // let input = document.querySelector('#userInput');
+    // let sps = document.querySelectorAll('span');
+    // input.onchange=removeworld;
+
+    // function removeworld() {
+    //   for(let s of sps) {
+    //     if(s.innerText==input.value) {
+    //       s.remove();
+    //     }
+    //   }
+    // }
+
+    //userInput : change 
+  </script>
+</body>
+</html>

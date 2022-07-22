@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.edu.common.EmpDAO;
+
 @WebServlet("/addMember")
 public class AddMemberServ extends HttpServlet{
 
@@ -21,47 +23,75 @@ public class AddMemberServ extends HttpServlet{
 		String role = req.getParameter("role");
 		System.out.println(name+","+ pass+","+ role);
 		
-		//get 방식으로 요청들어오면 : 수정 기능 만들기 / post 방식으로 요청들어오면 : 입력 기능
-		EmpDAO dao = new EmpDAO();
-		if(req.getMethod().toUpperCase().equals("GET")) { //가지고오는 값이 소문자인지 대문자인지 몰라서 대문자로 바꿔서 비교
-			//get으로 요청오면 업데이트, post로 요청오면 추가 하겠다.
-			dao.updateMember(name, pass, role);
-			int up =dao.updateMember(name, pass, role);
-			if(up<1) {
-				resp.setContentType("text/html;charset=UTF-8");
-				PrintWriter out = resp.getWriter();
-				System.out.println("수정 실패");
-				out.println("<script>alert('정보 수정에 실패하였습니다.');</script>");
-				out.flush();
-			}else {
-				resp.setContentType("text/html;charset=UTF-8");
-				PrintWriter out = resp.getWriter();
-				System.out.println("수정 완료");
-				out.println("<script>alert('정보 수정이 완료되었습니다.');</script>");
-				out.flush();
-			}
-		} else {
-			dao.insertMember(name, pass, role);
-			int up =dao.updateMember(name, pass, role);
-			if(up<1) {
-				resp.setContentType("text/html;charset=UTF-8");
-				PrintWriter out = resp.getWriter();
-				System.out.println("전송 실패");
-				out.println("<script>alert('등록에 실패하였습니다.');</script>");
-				out.flush();
-			}else {
-				resp.setContentType("text/html;charset=UTF-8");
-				PrintWriter out = resp.getWriter();
-				System.out.println("전송 완료");
-				out.println("<script>alert('정상적으로 등록되었습니다.');</script>");
-				out.flush();
-			}
-		}
-		//db에 입력
+		
+	    //get:수정 post:입력
+	      //DB에 입력하는 기능      
+	      EmpDAO dao= new EmpDAO();
+	      boolean isTrue=false;
+	      if(req.getMethod().toUpperCase().equals("GET")) {
+	         isTrue= dao.upadateMember(name, pass, role); 
+	
+	      } else {
+	         dao.insertMember(name, pass, role);
+	      }
+	      if(isTrue)   
+	      resp.getWriter().print("Completed.");
+	      else   
+	      resp.getWriter().print("Failed.");
+		      
+	   	}
+		
+		
+		
+//		//get 방식으로 요청들어오면 : 수정 기능 만들기 / post 방식으로 요청들어오면 : 입력 기능
+//		EmpDAO dao = new EmpDAO();
+//		boolean isTrue = false;
+//		if(req.getMethod().toUpperCase().equals("GET")) { //가지고오는 값이 소문자인지 대문자인지 몰라서 대문자로 바꿔서 비교
+//			//get으로 요청오면 업데이트, post로 요청오면 추가 하겠다.
+////			dao.updateMember(name, pass, role);
+//			isTrue = dao.updateMember(name, pass, role);
+////			int up =dao.updateMember(name, pass, role); 내가 한 것
+////			if(up<1) {
+////				resp.setContentType("text/html;charset=UTF-8");
+////				PrintWriter out = resp.getWriter();
+////				System.out.println("수정 실패");
+////				out.println("<script>alert('정보 수정에 실패하였습니다.');</script>");
+////				out.flush();
+////			}else {
+////				resp.setContentType("text/html;charset=UTF-8");
+////				PrintWriter out = resp.getWriter();
+////				System.out.println("수정 완료");
+////				out.println("<script>alert('정보 수정이 완료되었습니다.');</script>");
+////				out.flush();
+////			}
+//		} else {
+////			dao.insertMember(name, pass, role);
+//			/*int up = */dao.updateMember(name, pass, role);
+////			if(up<1) {
+////				resp.setContentType("text/html;charset=UTF-8");
+////				PrintWriter out = resp.getWriter();
+////				System.out.println("전송 실패");
+////				out.println("<script>alert('등록에 실패하였습니다.');</script>");
+////				out.flush();
+////			}else {
+////				resp.setContentType("text/html;charset=UTF-8");
+////				PrintWriter out = resp.getWriter();
+////				System.out.println("전송 완료");
+////				out.println("<script>alert('정상적으로 등록되었습니다.');</script>");
+////				out.flush();
+////			}
+//		}
+//		if(isTrue) {
+//			resp.getWriter().print("Completed");
+//		} else {
+//			resp.getWriter().print("Failed");
+//		}
+//			
+//		//db에 입력
 //		EmpDAO dao = new EmpDAO();
 //		dao.insertMember(name, pass, role);
 		
 //		resp.getWriter().print("Completed.");
 		
-	}
+	
 }
