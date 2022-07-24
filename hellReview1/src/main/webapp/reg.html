@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hello</title>
+</head>
+<body>
+	<div>
+		<form action=notice-reg method="post"> 
+		<!-- post방식은 요청바디에 붙어서 전달됨 => 큰 데이터 요청도 가능 (get요청은 용량제한있음)
+			=> url에 요청이 나오지않고, 바디에 들어감, but 한글깨짐!-->
+		<!-- 값을 전달받을때 name이 키워드가 된다 -->
+			<div>
+				<label>제목 : </label><input name="title" type="text">
+			</div>
+			<div>
+				<label>내용 : </label>
+				<textarea name="content"></textarea>
+			</div>
+			<div>
+				<input type="submit" value="등록"/>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
