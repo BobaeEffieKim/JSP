@@ -88,6 +88,7 @@ public class BoardDAO extends DAO{
 		return null;
 	}
 	
+	//조회수 
 	public void setCnt(int boardNo) {
 		String sql = "update board set cnt=cnt+1 where board_id=?";
 		connect();

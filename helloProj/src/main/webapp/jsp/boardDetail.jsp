@@ -42,7 +42,7 @@
 	<!-- 글번호, 제목, 내용, 작성자, 작성일자, 조회수 -->
 	
 		</table>
-		<a href="http://localhost:8088/helloProj/jsp/boardList.jsp"><input type="submit" value="목록으로"></a>
+		<a href="boardList.jsp"><input type="submit" value="목록으로"></a>
 	</div>
 </body>
 </html>

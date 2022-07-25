@@ -3,6 +3,7 @@ package com.tst.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,6 +23,8 @@ public class LogInOutServlet extends HttpServlet{
 		String id = req.getParameter("id");
 		String pwd = req.getParameter("pwd");
 		
+
+		
 		if(id.isEmpty() || pwd.isEmpty()) {
 			out.print("ID와 PW를 입력해주세요.");
 			return;
@@ -31,6 +34,14 @@ public class LogInOutServlet extends HttpServlet{
 			//새로 만들어졌거나 || 아이디속성을 읽어왔지만 널일 경우
 			session.setAttribute("id", id);
 			out.print("로그인을 완료했습니다.");
+			
+			//로그인하면 게시판 목록으로 가기 
+			req.setAttribute("param1", id);
+			req.setAttribute("param2", pwd);
+			RequestDispatcher rd = this.getServletContext().getRequestDispatcher("jsp/boardList.jsp");
+			rd.forward(req, resp);
+			
+			
 		} else {
 			out.print("현재 로그인 중입니다.");
 			

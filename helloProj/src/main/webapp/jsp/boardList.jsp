@@ -40,6 +40,7 @@
 				
 				}
 			%>		
+				<a href="addBoard.jsp"><input type="button" value="글작성"></a>
 			
 			</tbody>
 		</table>
