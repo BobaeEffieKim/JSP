@@ -47,6 +47,11 @@
 	
 		</table>
 		
+		<form action="insertCom.jsp" method="post">
+			댓글 <textarea name="Commentcontent" cols=30 rows=3></textarea><br>
+			작성자 <input type="text" name="id" value="${id }" readonly><br>
+			<a href="insertCom.jsp"><input type="submit" value="댓글달기"></a>
+		</form>
 		<%
 		
 			String loginId = (String)session.getAttribute("loginId");
@@ -59,7 +64,7 @@
 			}
 		%>
 		
-		<a href="boardList.jsp?bno=<%=vo.getBoardId() %>">목록으로</a>
+		<br><a href="boardList.jsp?bno=<%=vo.getBoardId() %>">목록으로</a>
 <%-- 		<a href= "updateForm.jsp?bno=<%=vo.getBoardId() %>">수정화면</a>
 		<a href="delete.jsp?bno=<%=vo.getBoardId() %>">삭제하기</a> --%>
 	</div>
