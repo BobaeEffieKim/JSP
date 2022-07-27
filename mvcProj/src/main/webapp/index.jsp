@@ -9,6 +9,9 @@
 <body>
 	<h3>첫페이지</h3>
 	<a href="memberView/memberInsert.jsp">회원등록</a><br>
+	<a href="memberView/memberSearch.jsp">회원검색</a><br>
+	<a href="memberView/memberUpdate.jsp">회원수정</a><br>
 	<a href="memberList.do">회원목록</a>
+	
 </body>
 </html>

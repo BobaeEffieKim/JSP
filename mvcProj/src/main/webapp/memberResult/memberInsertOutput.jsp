@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h3>${member.name}님 가입이 완료되었습니다.</h3>
+	<jsp:include page="./home.jsp"></jsp:include>
 </body>
 </html>

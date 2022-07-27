@@ -28,6 +28,7 @@ public class FrontController extends HttpServlet {
       mappings.put("/memberInsert.do", new MemberInsertController());//Controller가 구현하는 객체를 실행할것
       //path값이 위의 값                                               //MemberInsertController()<=구현객체
       mappings.put("/memberList.do", new MemberListController());
+      mappings.put("/memberSearch.do", new MemberSearchController());
    }
 
    @Override

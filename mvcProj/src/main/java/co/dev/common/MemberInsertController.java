@@ -34,13 +34,15 @@ public class MemberInsertController implements Controller {
       
       //요청 처리결과 뷰페이지 전송
       req.setAttribute("member", vo);
-      RequestDispatcher rd=req.getRequestDispatcher("memberResult/memberInsertOutput.jsp");
-      try {
-         rd.forward(req, resp);
-      } catch (Exception e) {
-         e.printStackTrace();
-      } 
       
-      }
+//      RequestDispatcher rd=req.getRequestDispatcher("memberResult/memberInsertOutput.jsp");
+//      try {
+//         rd.forward(req, resp);
+//      } catch (Exception e) {
+//         e.printStackTrace();
+//      } 
+//      
+      Utils.forward(req, resp, "memberResult/memberInsertOutput.jsp");
+   }
 
    }

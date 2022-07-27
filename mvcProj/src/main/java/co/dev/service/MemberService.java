@@ -30,4 +30,10 @@ public class MemberService {
 		return dao.getList();
 	}
 	
+	//회원조회
+	public MemberVO getMember(String id) {
+		return dao.searchMember(id);
+	}
+	
+	
 }

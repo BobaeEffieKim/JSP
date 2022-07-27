@@ -14,8 +14,6 @@ import co.dev.vo.MemberVO;
 
 
 
-
-
 public class MemberDAO {
 
 	
@@ -102,5 +100,31 @@ public class MemberDAO {
 		return list;
 	}
 	
+	//한건조회(id)
+	public MemberVO searchMember(String id) {
+		String str = "select * from member where id=? ";
+		connect();
+		
+		try {
+			pstmt = conn.prepareStatement(str);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				MemberVO vo = new MemberVO();
+				vo.setId(id);
+				vo.setMail(rs.getString("mail"));
+				vo.setName(rs.getString("name"));
+				vo.setPasswd(rs.getString("passwd"));
+				
+				return vo;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		return null;
+	}
 	
 }

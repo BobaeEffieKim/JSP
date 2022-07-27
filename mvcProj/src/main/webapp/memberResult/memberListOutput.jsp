@@ -16,6 +16,7 @@
 			<td>${vo.mail }</td><td>${vo.passwd }</td>
 			</tr>
 		</c:forEach>
+		<jsp:include page="./home.jsp"></jsp:include>
 	</table>
 </body>
 </html>
