@@ -35,5 +35,14 @@ public class MemberService {
 		return dao.searchMember(id);
 	}
 	
+	//회원정보 수정
+	public void modifyMember(MemberVO vo) {
+		dao.updateMember(vo);
+	}
+	
+	//회원삭제
+	public void removeMember(MemberVO vo) {
+		dao.deleteMember(vo);
+	}
 	
 }

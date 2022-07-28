@@ -20,7 +20,7 @@
 	<c:set var="vo" value="${member}"/>
 	<c:choose>
 	<c:when test="${!empty vo }">
-		<form action="" method="post">
+		<form action="${pageContext.request.contextPath }/memberUpdate.do" method="post">
 			아이디 : <input type="text" name="id" value="${vo.id }" readonly><br>
 			비밀번호 : <input type="password" name="passwd" value="${vo.passwd }" ><br>
 			이름 : <input type="text" name="name" value="${vo.name }" ><br>
