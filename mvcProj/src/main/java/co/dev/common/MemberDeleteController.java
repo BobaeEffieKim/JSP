@@ -26,7 +26,7 @@ public class MemberDeleteController implements Controller {
 		
 		/////////////////////////////////		
 		MemberService service = MemberService.getInstance();
-		service.removeMember(vo);
+		service.removeMember(id);
 		
 		//공유 : vo
 		req.setAttribute("member", vo);

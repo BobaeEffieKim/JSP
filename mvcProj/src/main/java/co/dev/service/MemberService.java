@@ -41,8 +41,8 @@ public class MemberService {
 	}
 	
 	//회원삭제
-	public void removeMember(MemberVO vo) {
-		dao.deleteMember(vo);
+	public boolean removeMember(String id) {
+		return dao.deleteMember(id);
 	}
 	
 }
